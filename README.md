@@ -72,5 +72,6 @@ yarn dev
   -  Spinner de carregamento
   -  Adição do formulário de login
   -  Adição da página do usuário Admininstrador
+- Aula 13/11/2023: Pinia e Autenticação via JWT
 
   
