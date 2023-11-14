@@ -72,6 +72,9 @@ yarn dev
   -  Spinner de carregamento
   -  Adição do formulário de login
   -  Adição da página do usuário Admininstrador
-- Aula 13/11/2023: Pinia e Autenticação via JWT
+- Aula 13/11/2023: Autenticação via JWT
+- **Feito fora de sala**:
+  - Mudança no index.html e App.vue para alterar o header de acordo com o usuário logado
+
 
   
