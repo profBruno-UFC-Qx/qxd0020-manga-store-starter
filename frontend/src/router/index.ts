@@ -3,6 +3,7 @@ import HomePage from '@/pages/HomePage.vue'
 import HomeAdmin from '@/pages/HomeAdmin.vue'
 import MangaDetails from '@/pages/MangaDetails.vue'
 import Login from '@/pages/Login.vue'
+import { useUserStore } from '@/stores/userStore'
 
 const routes = [
   {
@@ -11,7 +12,10 @@ const routes = [
   },
   {
     path: '/admin',
-    component: HomeAdmin
+    component: HomeAdmin,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/',
@@ -27,4 +31,15 @@ const routes = [
 export const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach((to, from) => {
+  const userStore = useUserStore()
+  const user = userStore.user.username
+  const papel = userStore.user.role
+
+  console.log(`quero ir pra ${to.path}. É protegida? ${to.meta.requireAuth}. Eu sou o ${user} com o papel ${papel}`)
+  if(to.meta.requireAuth && user == null) {
+    return { path: "/login" }
+  }
 })

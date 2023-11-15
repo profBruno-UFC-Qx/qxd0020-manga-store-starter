@@ -1,5 +1,6 @@
 import { api } from "@/api"
 import { type User } from '@/types'
+import { useUserStore } from "@/stores/userStore"
 
 class AuthenticationService {
   constructor() {}
@@ -10,8 +11,11 @@ class AuthenticationService {
       password
     })
 
-    const user = { ...data.user, jwt: data.jwt }
+    const user: User = { ...data.user, jwt: data.jwt }
     user.role = await this.getRole(user)
+
+    const userStore = useUserStore()
+    userStore.user = user
 
     localStorage.setItem('role', user.role)
     localStorage.setItem('username', user.username)

@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { type Manga } from '@/types'
+import { getUploadURL } from '@/composables/useUploadFile';
+import { mangaService } from '@/api/MangaService'
+
+const loading = ref(true)
+const mangas = ref<Manga[]>([]) 
+const error = ref('')
+
+
+onMounted(async () => {
+  try {
+    mangas.value = await mangaService.all()
+  } catch (e) {
+    if(e instanceof Error) {
+      error.value = e.message
+    }
+  } finally {
+    loading.value = false
+  }
+})
+</script>
+
 <template>
 <a class="btn btn-success"><i class="bi bi-plus"></i>Add</a>
       

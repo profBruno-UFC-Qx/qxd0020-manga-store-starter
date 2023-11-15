@@ -75,6 +75,8 @@ yarn dev
 - Aula 13/11/2023: Autenticação via JWT
 - **Feito fora de sala**:
   - Mudança no index.html e App.vue para alterar o header de acordo com o usuário logado
-
+- Aula 14/11/2023: 
+  - Pinia: autenticação e autorização.
+  - Proteção de rodas usando navigation guards.
 
   
