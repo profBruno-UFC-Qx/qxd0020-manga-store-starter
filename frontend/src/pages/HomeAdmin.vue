@@ -45,10 +45,11 @@ onMounted(async () => {
         <td>{{ manga.number }}</td>
         <td>{{ manga.price }}</td>
         <td>
-          <a class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#confirmationModal"><i class="bi bi-trash"></i></a> 
+          <a class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a> 
           <a class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a></td>
       </tr>
     </tbody>
   </table>
 </div>
+
 </template>
