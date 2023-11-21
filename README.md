@@ -84,5 +84,8 @@ yarn dev
   - Página de NotFound
   - Getter para o token na user store
   - Deleção de mangá com confirmação via Modal
+- **Feito fora de sala**:
+  - Interceptors para página de erro
+  - Melhoria na página de erro 
 
   

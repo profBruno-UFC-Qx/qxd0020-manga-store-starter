@@ -28,7 +28,7 @@ onMounted(async () => {
 <p v-if="error">
   {{ error }}
 </p>
-<div v-if="!loading" class="row justify-content-center">
+<div v-else-if="!loading" class="row justify-content-center">
   <div class="col-lg-8 col-sm-12">
     <div class="card mb-3">
       <div class="row g-0">
