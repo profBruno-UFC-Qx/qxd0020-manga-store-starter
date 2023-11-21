@@ -78,5 +78,11 @@ yarn dev
 - Aula 14/11/2023: 
   - Pinia: autenticação e autorização.
   - Proteção de rodas usando navigation guards.
+- **Feito fora de sala**:
+  - Adição do arquivo que contém o formulário de adição/edição de mangás
+- Aula 20/11/2023: 
+  - Página de NotFound
+  - Getter para o token na user store
+  - Deleção de mangá com confirmação via Modal
 
   
