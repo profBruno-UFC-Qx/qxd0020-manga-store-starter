@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
 import HomeAdmin from '@/pages/HomeAdmin.vue'
+import NotFound from '@/pages/NotFound.vue'
 import MangaDetails from '@/pages/MangaDetails.vue'
+import MangaForm from '@/pages/MangaForm.vue'
 import Login from '@/pages/Login.vue'
 import { useUserStore } from '@/stores/userStore'
 
@@ -25,7 +27,16 @@ const routes = [
   {
     path: '/mangas/:id',
     component: MangaDetails
-  }
+  },
+  { 
+    path: '/mangas/novo',
+    component: MangaForm
+  },
+  { 
+    path: '/:pathMatch(.*)*', 
+    name: 'NotFound', 
+    component: NotFound 
+  },
 ]
 
 export const router = createRouter({
