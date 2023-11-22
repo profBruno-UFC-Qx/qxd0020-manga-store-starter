@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { isAxiosError } from 'axios'
 import { useRoute } from 'vue-router'
 import { type Manga } from '@/types'
 import { getUploadURL } from '@/composables/useUploadFile'
@@ -16,7 +17,11 @@ onMounted(async () => {
   try {
     manga.value = await mangaService.get(Number(route.params.id))
   } catch (e) {
-    error.value = e.message
+    if(isAxiosError(e)) {
+      error.value = e.response?.data.error.message
+    } else if(e instanceof Error) {
+      error.value = e.message
+    }
   } finally {
     loading.value = false
   }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { AxiosError } from 'axios'
+import { isAxiosError } from 'axios'
 import { useRouter } from 'vue-router'
 import { authenticationService} from '@/api/AuthenticationService'
 
@@ -22,7 +22,7 @@ async function authenticate() {
       router.push('/')
     }
   } catch (e) {
-    if(e instanceof AxiosError) {
+    if(isAxiosError(e)) {
       console.log(e.response?.data)
       errorMessage.value = e.response?.data.error.message
     } 

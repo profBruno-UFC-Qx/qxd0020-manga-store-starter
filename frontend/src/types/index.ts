@@ -10,7 +10,7 @@ export type Manga = {
 
 export type Cover = {
   url: string,
-  altenativeText: string
+  alternativeText: string
 }
 
 export type Comment = {

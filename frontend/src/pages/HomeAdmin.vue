@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { isAxiosError } from 'axios'
 import { type Manga } from '@/types'
 import { getUploadURL } from '@/composables/useUploadFile';
 import { mangaService } from '@/api/MangaService'
@@ -15,7 +16,9 @@ onMounted(async () => {
   try {
     mangas.value = await mangaService.all()
   } catch (e) {
-    if(e instanceof Error) {
+    if(isAxiosError(e)) {
+      error.value = e.response?.data.error.message
+    } else if(e instanceof Error) {
       error.value = e.message
     }
   } finally {
@@ -73,7 +76,7 @@ async function remove() {
         <td>{{ manga.price }}</td>
         <td>
           <a class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="selectManga(manga.id, manga.title)" ><i class="bi bi-trash"></i></a> 
-          <a class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a></td>
+          <router-link :to="`/mangas/editar/${manga.id}`" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></router-link></td>
       </tr>
     </tbody>
   </table>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { isAxiosError } from 'axios'
 import { type Manga } from '@/types'
 import MangaCard from '@/components/MangaCard.vue'
 import { mangaService } from '@/api/MangaService'
@@ -13,7 +14,9 @@ onMounted(async () => {
   try {
     mangas.value = await mangaService.all()
   } catch (e) {
-    if(e instanceof Error) {
+    if(isAxiosError(e)) {
+      error.value = e.response?.data.error.message
+    } else if(e instanceof Error) {
       error.value = e.message
     }
   } finally {

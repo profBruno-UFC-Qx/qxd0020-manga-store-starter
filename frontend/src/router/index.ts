@@ -33,7 +33,18 @@ const routes = [
   },
   { 
     path: '/mangas/novo',
-    component: MangaForm
+    component: MangaForm,
+    meta: {
+      requireAuth: true
+    }
+  },
+  {
+    path: '/mangas/editar/:id',
+    component: MangaForm,
+    meta: {
+      requireAuth: true
+    },
+    props: true 
   },
   {
     path: '/naoEncontrado',
