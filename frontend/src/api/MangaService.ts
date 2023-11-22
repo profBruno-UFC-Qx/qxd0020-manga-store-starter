@@ -55,12 +55,22 @@ class MangaService {
 
   async update(id: number, title: string, price: number, number: number, cover?: File): Promise<Manga> {
     const userStore = useUserStore()
+    type BodyFields = { 
+      data: {
+        title: string,
+        price: number,
+        number: number
+      }
+    }
     const fields = {
       title,
       price,
       number
     }
-    let body: typeof fields | FormData = fields
+
+    let body: BodyFields | FormData = { 
+      data: fields
+    }
     if(cover) {
       body = new FormData()
       body.append('files.cover', cover)
