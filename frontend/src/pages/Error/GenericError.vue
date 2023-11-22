@@ -9,13 +9,15 @@ const icon = computed(() => {
   switch(Number(props.status)) {
     case 404:
       return "exclamation-octagon"
-    case 403 | 401:
+    case 401:
+    case 403:
       return "hand-thumbs-down"
     case 500:
       return "tropical-storm"
     default:
       return "info-square"
   }
+  
 })
 </script>
 

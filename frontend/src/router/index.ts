@@ -7,6 +7,7 @@ import MangaForm from '@/pages/MangaForm.vue'
 import Login from '@/pages/Login.vue'
 import Error from '@/pages/Error/GenericError.vue'
 import NotFound from '@/pages/Error/NotFound.vue'
+import SemPermissao from '@/pages/Error/SemPermissao.vue'
 import ServerError from '@/pages/Error/ServerError.vue'
 import { useUserStore } from '@/stores/userStore'
 
@@ -55,6 +56,16 @@ const routes = [
     path: '/erroNoServidor',
     name: '500',
     component: ServerError,
+  },
+  {
+    path: '/semPermissao',
+    name: '403',
+    component: SemPermissao
+  },
+  {
+    path: '/semPermissao',
+    name: '401',
+    component: SemPermissao
   },
   { 
     path: '/:pathMatch(.*)*', 
